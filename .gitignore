@@ -1,0 +1,19 @@
+# Keep the portfolio separate from local source archives and private assets.
+.DS_Store
+Thumbs.db
+__pycache__/
+.env
+.env.*
+private/
+legacy/
+*.zip
+*.tar
+*.gz
+*.pth
+*.pt
+*.onnx
+*.wk
+*.smartmore
+
+# Full local video; README uses the smaller GIF.
+assets/road-traffic-signs.mp4

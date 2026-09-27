@@ -1,0 +1,51 @@
+common:
+  version: "v0.6.0"
+  tag: "11.28_cement_"
+
+asphalt_cement_defect:
+  asphalt_cement_classify:
+    model_path: "./model/asphalt_cement_classify/asphalt_cement_classify_v0.6.0.onnx"
+    defect_names: ["cement", "asphalt"]
+
+  asphalt_defect:
+    model_path: "./model/asphalt_defect/asphalt_defect_v0.6.0.onnx"
+    defect_names: ['kengcao', 'zongxiangliefeng', 'xiubu', 'junlie', 'kuaizhuangliefeng', 'songsan', 'kenbian', 'hengxiangliefeng']
+
+  cement_defect:
+    model_path: "./model/cement_defect/shuini-highway-6cls-78912010405city-150epochs.onnx"
+    defect_names:  ['kengdong', 'liefeng', 'mianbanposui', 'bianjiaoboluo', 'banjiaoduanlie', 'xiubu']
+
+asset:
+  asset_detect:
+    detect_model_path: "./model/asset/Asset_detect_v1.1.0.onnx"
+    # 新的
+    # detect_names: ['lichengzhuang', 'jiaotongbiaozhi', 'longmenjia', 'dianziqingbaoban', 'yuanbiaozhi', 'jiaotongxinhaodeng',  'jinggai', 'sanjiaobiaozhi']
+    # 1.1.0
+    detect_names:  ['lichengzhuang', 'biaozhibiaopai', 'longmenjia', 'dianziqingbaoban', 'jiaotongxinhaodeng',  'jinggai', 'sanjiaobiaozhi','covered']
+    # 旧的
+    # detect_names: ['longmenjia', 'dianziqingbaoban', 'jiaotongxinhaodeng','jinggai', 'jiaotongbiaozhi', 'sanjiaobiaozhi','yuanbiaozhi','gonglizhuang']
+    small_jtbz_filter: 3000
+    jtbz_cals: ['biaozhibiaopai', 'sanjiaobiaozhi', 'covered']
+    DEEPSORT:
+      REID_CKPT: "./model/asset/ckpt.t7"
+      MAX_DIST: 0.15
+      MIN_CONFIDENCE: 0
+      NMS_MAX_OVERLAP: 0.5
+      MAX_IOU_DISTANCE: 0.7
+      MAX_AGE: 10
+      N_INIT: 3
+      NN_BUDGET: 10
+
+  asset_retrival:
+    retrival_model_path: "./model/asset/asset_retrival_v0.6.0.onnx"
+    retrival_name: "sanjiaobiaozhi"
+    retrival_feature_lib_path: "./model/asset/signs.index"
+    retrival_cls_index_path: "./model/asset/sign_dict.json"
+    retrival_register_path: ""
+    # 如果不存在feature_lib 和 cls_index 可以开放目录重新注册
+    # retrival_register_path: "/newdata/jiamingyue/total_data/boshilin/boshilin_sign_register"
+
+  asset_ocr:
+    ocr_model_path: "./model/asset/asset_ocr_v0.6.0.onnx"
+    ocr_names: "gonglizhuang"
+    ocr_dict: "./model/asset/asset_ocr.txt"

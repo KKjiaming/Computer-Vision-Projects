@@ -1,0 +1,2 @@
+export PYTHONPATH=/newdata/weiqiangchen/SlowFast_Train/slowfast:$PYTHONPATH
+python tools/run_net.py --cfg configs/ChinaPost/SLOWFAST_SEG_8x8_R50.yaml DATA.PATH_TO_DATA_DIR /path/to/local_asset NUM_GPUS 1 TEST.ENABLE False DEMO.ENABLE False TRAIN.BATCH_SIZE 1
